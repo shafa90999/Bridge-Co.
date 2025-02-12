@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridge&Co.</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4B0082, #0000FF);
+            color: white;
+            overflow-x: hidden;
+            text-align: center;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #4B0082, #0000FF);
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .logo img {
+            width: 300px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            padding: 50px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .services p:hover {
+            color: yellow;
+            cursor: pointer;
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        .contact-form button {
+            padding: 10px;
+            background: yellow;
+            border: none;
+            cursor: pointer;
+        }
+        .review-slider {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+        }
+        .review {
+            display: none;
+            font-style: italic;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="#reviews">Reviews</a>
+    </nav>
+    <div class="logo">
+        <img src="/mnt/data/Beige_White_Simple_Minimalist_Business_Card-removebg.png" alt="Bridge&Co. Logo">
+    </div>
+    <div class="container">
+        <section id="services" class="services">
+            <h2>Our Services</h2>
+            <p>1. Strategy Development</p>
+            <p>2. Content Planning</p>
+            <p>3. Content Calendar</p>
+            <p>4. Community Engagement</p>
+            <p>5. Analysis and Report</p>
+        </section>
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+        <section id="reviews" class="reviews">
+            <h2>Reviews</h2>
+            <div class="review-slider">
+                <p class="review active">"Great service! Highly recommended." - John</p>
+                <p class="review">"Amazing team and excellent support!" - Sarah</p>
+                <p class="review">"Professional and creative solutions." - Michael</p>
+            </div>
+        </section>
+    </div>
+    <script>
+        let index = 0;
+        function showReview() {
+            let reviews = document.querySelectorAll(".review");
+            reviews.forEach(review => review.classList.remove("active"));
+            reviews[index].classList.add("active");
+            index = (index + 1) % reviews.length;
+        }
+        setInterval(showReview, 3000);
+    </script>
+</body>
+</html>
